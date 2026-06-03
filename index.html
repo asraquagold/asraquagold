@@ -856,12 +856,8 @@ footer{background:#030810;border-top:2px solid var(--gold);padding:50px 40px 20p
 
 <!-- ═══════════════════════════ JAVASCRIPT ═══════════════════════════ -->
 <script>
-/* ── Google Apps Script URL ─────────────────────
-   Apna deployed URL yahan paste karein           */
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwflCLZRO66391EmukiXqBbMAknGzYr5ffVlCcY7yIQaiBXKYXUgjbNWuFvxj_on5Wg/exec";
-/* ─────────────────────────────────────────────── */
 
-/* ── PAGE NAVIGATION ── */
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -879,12 +875,10 @@ function showPage(id) {
   document.title = titles[id] || document.title;
 }
 
-/* ── HAMBURGER ── */
 function toggleMenu() {
   document.getElementById('navLinks').classList.toggle('open');
 }
 
-/* ── BANNER SLIDER ── */
 let cur = 0;
 const TOTAL = 4;
 
@@ -908,7 +902,6 @@ bs?.addEventListener('touchend', e => {
   if (Math.abs(diff) > 50) diff > 0 ? nextSlide() : prevSlide();
 });
 
-/* ── CONTACT FORM → GOOGLE SHEETS ── */
 async function handleSubmit(e) {
   e.preventDefault();
   const btn = document.getElementById('subBtn');
@@ -921,14 +914,8 @@ async function handleSubmit(e) {
     email:     document.getElementById('fe').value.trim(),
     city:      document.getElementById('fc').value.trim(),
     product:   document.getElementById('fpr').value,
-    message:   document.getElementById('fm').value.trim(),
     timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
   };
-
-  if (SCRIPT_URL === "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE") {
-    await new Promise(r => setTimeout(r, 900));
-    showOk(); return;
-  }
 
   try {
     await fetch(SCRIPT_URL, {
